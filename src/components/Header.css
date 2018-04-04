@@ -1,0 +1,13 @@
+.header {
+	background-color: #1a1d24;
+	color: white;
+}
+
+.header a {
+	color: white;
+	text-decoration: none;
+}
+
+.header .row {
+	border: solid 1px red;
+}
