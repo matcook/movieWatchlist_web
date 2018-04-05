@@ -99,18 +99,14 @@
 .home .didYouKnow .content .left{
 	position : relative;
 	min-width : 545px;
-	width : 47%;
-	padding-right : 0;
-}
-
-.home .didYouKnow .content .left img{
 	width : 100%;
+	padding-right : 0;
+	display: flex;
 }
 
 .home .didYouKnow .content .left div{
-	position : absolute;
 	width : 100%;
-	bottom : 15px;
+	top : 5px;
 	padding : 15px;
 }
 
@@ -147,6 +143,13 @@
 	padding : 15px;
 }
 
+.home .preloader {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 @media screen and (min-width : 320px) and (max-width : 774px){
 	.home .content .left, 
 	.home .content .right{
@@ -157,4 +160,6 @@
 	.home .inTheatre .content{
 		justify-content: center;
 	}
+
 }
+
