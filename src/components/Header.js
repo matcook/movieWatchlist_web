@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Navbar, NavItem } from 'react-materialize';
 import './Header.css';
 
 class Header extends Component{
@@ -6,7 +7,8 @@ class Header extends Component{
 		super();
 
 		this.state = {
-			searchQuery : ''
+			searchQuery : '',
+			movies : []
 		};
 	}
 
@@ -24,15 +26,12 @@ class Header extends Component{
 		return (
 			<div className="header">
 				<div className="row">
-					<div className="logo">
-						<span>LOGO</span>
-					</div>
-					<nav>
-						<a href="#">Home</a>
-						<a href="#">Discover</a>
-						<a href="#">Movies</a>
-						<a href="#">TV Shows</a>
-					</nav>
+					<Navbar brand="logo" right>
+						<NavItem href="#">Home</NavItem>
+						<NavItem href="#">Discover</NavItem>
+						<NavItem href="#">Movies</NavItem>
+						<NavItem href="#">TV Shows</NavItem>
+					</Navbar>
 					<div className="signin">
 						<a href="#">Login</a>
 						<a href="#">Register</a>
