@@ -1,0 +1,88 @@
+.home .image-gallery{
+	background-image : url('../img/slider-bg.jpg');
+	background-size : cover;
+	background-repeat : none;
+	background-position : top left;
+}
+
+.content{
+	display : flex;
+	flex-wrap : wrap;
+}
+
+.top{
+	width : 100%;
+	display : flex;
+	align-items: center;
+	border-bottom : 1px solid #666;
+	padding : 10px 30px;
+	color : #e2412f;
+}
+
+h2{
+	flex-grow : 1;
+	margin-left : 15px;
+}
+
+a{
+	color : #e2412f;
+}
+
+.left{
+	width : 60%;
+	padding-right : 15px;
+}
+
+.newsFeed img, 
+.didYouKnow img,
+strong,
+p{
+	margin-bottom : 10px;
+	display : block;
+}
+
+.left img{
+	width : 100%;
+}
+
+.right{
+	width : 40%;
+	padding-left : 15px;
+}
+
+.right img{
+	width : 100%;
+}
+
+.right ul{
+	list-style-type : none;
+	padding : 0;
+}
+
+.newsFeed .right ul li{
+	display : flex;
+}
+
+.newsFeed .right ul li img{
+	margin-right : 10px;
+}
+
+.didYouKnow .left{
+	display : flex;
+}
+
+.didYouKnow .right li{
+	display : flex;
+}
+
+.didYouKnow img{
+	margin-right : 10px;
+}
+
+.didYouKnow .left img{
+	min-width : 400px;
+}
+
+.didYouKnow .right img{
+	width : 200px;
+}

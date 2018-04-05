@@ -1,13 +1,44 @@
-.header {
-	background-color: #1a1d24;
-	color: white;
+.header{
+	background-color : #1a1d24;
+	color : white;
 }
 
-.header a {
-	color: white;
-	text-decoration: none;
+.header a{
+	color : white;
+	text-decoration : none;
 }
 
-.header .row {
-	border: solid 1px red;
+.header .row{
+	padding : 30px;
+	display : flex;
+	align-items: center;
+}
+
+.header .row:last-child{
+	padding : 0 30px 30px 30px;
+}
+
+.header nav{
+	display : flex;
+	justify-content: center;
+	flex-grow : 1;
+	padding-left : 30px;
+}
+
+.header nav a{
+	padding : 0 15px;
+}
+
+.header .signin a{
+	padding : 0 15px;
+}
+
+.header .search{
+	padding : 5px;
+	background-color : #666;
+	color : white;
+	border : 1px solid transparent;
+	margin-left : 15px;
+	border-radius : 15px;
+	width : 100%;
 }
