@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Navbar, NavItem } from 'react-materialize';
+import { Link } from 'react-router-dom';
 import './Header.css';
 
 class Header extends Component{
@@ -27,18 +28,18 @@ class Header extends Component{
 			<div className="header">
 				<div className="row">
 					<Navbar brand="logo" right>
-						<NavItem href="#">Home</NavItem>
-						<NavItem href="#">Discover</NavItem>
-						<NavItem href="#">Movies</NavItem>
-						<NavItem href="#">TV Shows</NavItem>
+						<NavItem href="/">Home</NavItem>
+						<NavItem href="/discover">Discover</NavItem>
+						<NavItem href="/movies">Movies</NavItem>
+						<NavItem href="/shows">TV Shows</NavItem>
 					</Navbar>
 					<div className="signin">
-						<a href="#">Login</a>
-						<a href="#">Register</a>
+						<a href="#login">Login</a>
+						<a href="#register">Register</a>
 					</div>
 				</div>
 				<div className="row">
-					<a href="#" onClick={ ()=> this.search() }><i className="fa fa-search"></i></a>
+					<a href="#search" onClick={ ()=> this.search() }><i className="fa fa-search"></i></a>
 					<input type="search" className="search" onChange={ (e)=> this.onSearchTextChange(e) }/>
 				</div>
 			</div>

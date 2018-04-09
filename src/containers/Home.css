@@ -101,12 +101,12 @@
 	min-width : 545px;
 	width : 100%;
 	padding-right : 0;
-	display: flex;
+	display : flex;
 }
 
 .home .didYouKnow .content .left div{
 	width : 100%;
-	top : 5px;
+	bottom : 15px;
 	padding : 15px;
 }
 
@@ -143,23 +143,41 @@
 	padding : 15px;
 }
 
-.home .preloader {
-	width: 100%;
-	display: flex;
+.home .preloader{
+	display : flex;
 	justify-content: center;
 	align-items: center;
 }
 
 @media screen and (min-width : 320px) and (max-width : 774px){
+	.home .content{
+		padding : 0;
+	}
+
 	.home .content .left, 
 	.home .content .right{
 		flex-grow : 1;
-		padding : 0;
+		/*padding : 30px;*/
+		overflow : hidden;
+	}
+
+	.home .didYouKnow .content .left{
+		min-width : 0;
+		width : 100%;
+		max-width : 100%;
 	}
 
 	.home .inTheatre .content{
 		justify-content: center;
 	}
 
-}
+	.home .content .right ul li{
+		flex-direction: column;
+	}
 
+	.home .preloader{
+		display : flex;
+		justify-content: center;
+		align-items: center;
+	}
+}

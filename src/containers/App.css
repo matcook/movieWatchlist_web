@@ -6,3 +6,8 @@ h2{
 strong{
 	font-weight : bold;
 }
+
+main{
+  min-height : calc(100vh - 357px);
+  background-color : #eee;
+}
