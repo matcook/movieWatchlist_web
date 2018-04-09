@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { Carousel } from 'react-materialize';
 import './Home.css';
 
+const tmdb_url = process.env.REACT_APP_TMDB_URL;
+const tmdb_api_key = process.env.REACT_APP_TMDB_API_KEY;
+const img_url = process.env.REACT_APP_TMDB_IMAGE_URL;
+
 class Home extends Component{
   constructor(props){
     super(props);
@@ -16,9 +20,7 @@ class Home extends Component{
 
   //will run after the constructor, but before it is rendered to the screen
   componentWillMount(){
-    let tmdb_api_key = process.env.REACT_APP_TMDB_API_KEY;
-
-    fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${tmdb_api_key}&page=1`, {
+    fetch(`${tmdb_url}movie/now_playing?api_key=${tmdb_api_key}&page=1`, {
       headers : {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
@@ -28,7 +30,7 @@ class Home extends Component{
     .then((responseJson) => {
       console.log(responseJson);
       this.setState({
-          nowPlaying : responseJson.results
+        nowPlaying : responseJson.results
       });
       this.getReview();
     })
@@ -38,15 +40,14 @@ class Home extends Component{
   }
 
   getReview(){
-    let tmdb_api_key = process.env.REACT_APP_TMDB_API_KEY;
     let movie_id = this.state.nowPlaying[0].id;
 
-    fetch(`https://api.themoviedb.org/3/movie/${movie_id}/reviews?api_key=${tmdb_api_key}&page=1`)
+    fetch(`${tmdb_url}movie/${movie_id}/reviews?api_key=${tmdb_api_key}&page=1`)
       .then((response) => response.json())
       .then((responseJson) => {
-          this.setState({
-                  reviews : responseJson.results
-              });
+        this.setState({
+          reviews : responseJson.results
+        });
       })
       .catch((error) => {
         console.error(error);
@@ -57,7 +58,6 @@ class Home extends Component{
     let date = new Date();
     date = date.toString();
     let reviews = this.state.reviews;
-    let img_url = process.env.REACT_APP_TMDB_IMAGE_URL;
     let movie = this.state.nowPlaying[0];
 
     return reviews.map((review) => 
@@ -79,7 +79,6 @@ class Home extends Component{
   renderNowPlaying(){
       //grab the first 4 movies from the nowPlaying list
       let movies = this.state.nowPlaying.slice(0, 4);
-      let img_url = process.env.REACT_APP_TMDB_IMAGE_URL;
 
       return movies.map((movie) => (
           <div key={movie.id}>
@@ -90,16 +89,14 @@ class Home extends Component{
   }
 
   renderSlides(){
-      let img_url = process.env.REACT_APP_TMDB_IMAGE_URL;
       let movies = this.state.nowPlaying.slice(5, 9);
       let images = movies.map((movie) => {
           return movie.backdrop_path;
       });
 
       return images.map((img, i) => (
-        <div className='red' style={{backgroundImage : `url(${img_url}w500${img})`, backgroundSize : 'cover', backgroundPosition : 'top left'}} key={i}>
-          <h2>First Panel</h2>
-          <p className='white-text'>This is your first panel</p>
+        <div className='red' style={{backgroundImage : `url(${img_url}w1280${img})`, backgroundSize : 'cover', backgroundPosition : 'top left'}} key={i}>
+          <h2>{ movies[i].title }</h2>
         </div>
       ));
   }
@@ -111,12 +108,13 @@ class Home extends Component{
 
     return (
       <div className="home">
-        <Carousel options={{ duration : 200, fullWidth: true, indicators : true }}>
-          <div className='red'>
-            <h2>First Panel</h2>
-            <p className='white-text'>This is your first panel</p>
-          </div>
-        </Carousel>
+        {
+          this.state.nowPlaying.length > 0 ? (
+            <Carousel options={{ duration : 200, fullWidth: true, indicators : true }}>
+              { this.renderSlides() }
+            </Carousel>
+          ) : null
+        }
 
         <div className="newsFeed">
           <div className="top">
