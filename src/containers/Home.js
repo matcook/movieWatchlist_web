@@ -28,7 +28,6 @@ class Home extends Component{
     })
     .then((response) => response.json())
     .then((responseJson) => {
-      console.log(responseJson);
       this.setState({
         nowPlaying : responseJson.results
       });

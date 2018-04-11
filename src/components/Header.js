@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Navbar, NavItem } from 'react-materialize';
-import { Link } from 'react-router-dom';
 import './Header.css';
 
 class Header extends Component{
@@ -20,7 +19,7 @@ class Header extends Component{
 	}
 
 	search(){
-		console.log("User is looking for :" + this.state.searchQuery );
+		this.props.searchQuery(this.state.searchQuery);
 	}
 
 	render(){
@@ -34,8 +33,8 @@ class Header extends Component{
 						<NavItem href="/shows">TV Shows</NavItem>
 					</Navbar>
 					<div className="signin">
-						<a href="#login">Login</a>
-						<a href="#register">Register</a>
+						<a href="/login">Login</a>
+						<a href="/register">Register</a>
 					</div>
 				</div>
 				<div className="row">

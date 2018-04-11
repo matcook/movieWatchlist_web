@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import "./List.css";
 
 class List extends Component{
@@ -9,6 +10,7 @@ class List extends Component{
   renderListItems(){
     let img_url = process.env.REACT_APP_TMDB_IMAGE_URL;
     let currentScreen = this.props.match.url;
+    console.log(this.props.match);
 
     return this.props.movies.map( (movie) => (
       <div key={movie.id}>
@@ -16,7 +18,7 @@ class List extends Component{
         <div>
           <p>{movie.release_date}</p>
           <p className="overview">{movie.overview.substring(0, 300)}</p>
-        <a href={`${currentScreen}/${movie.id}`}>read more</a>
+        <Link to={`${currentScreen}/${movie.id}`}>read more</Link>
         </div>
       </div>
     ));

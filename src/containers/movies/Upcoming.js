@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import List from '../../components/List.js';
+import Movie from '../movie/Movie.js';
+import { Route, Switch } from 'react-router-dom';
 
 
 class Upcoming extends Component{
@@ -27,10 +29,21 @@ class Upcoming extends Component{
   }
 
   render(){
+    let currentScreen = this.props.match.url;
+
     return (
       <div className="upcoming">
-        <h1>Upcoming</h1>
-        <List movies={this.state.upcoming} match={this.props.match}/>
+        <Switch>  
+          <Route path={`${currentScreen}/:movie`} component={Movie} />
+          <Route path={`${currentScreen}/`} render={ (props) => {
+            return(
+              <div>
+                <h1>Upcoming</h1>
+                <List movies={this.state.upcoming} match={this.props.match}/>
+              </div>
+            );
+          } } />
+        </Switch>
       </div>
     );
   }
